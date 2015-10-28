@@ -1,0 +1,15 @@
+Function Student_preferences(CId As String, SID As String)
+    Dim lastrow As Long
+    lastrow = Range("A" & Rows.Count).End(xlUp).Row
+    For i = 13 To lastrow
+        If Cells(i, 1) = SID Then
+            For j = 2 To 6
+                If Cells(i, j) = CId Then
+                    Student_preferences = j - 1
+                    Exit Function
+                End If
+            Next
+        End If
+    Next
+    Student_preferences = 0
+End Function
