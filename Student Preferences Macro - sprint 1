@@ -1,0 +1,29 @@
+Private Sub CommandButton1_Click()
+    Range("I10:M15").ClearContents
+    Dim line As Long
+    Dim temp As String
+    Dim exists As Boolean
+    line = 10
+    For i = 3 To 8
+        For j = 4 To 8
+            exists = False
+            If Cells(i, j) <> "" Then
+                temp = Student_preferences(Cells(i, 1), Cells(i, j))
+                If temp + j - 3 < Range("M" & line) Or Range("M" & line) = "" Then
+                    For x = 10 To 14
+                        If Cells(i, j) = Cells(x, 11) Then exists = True
+                    Next
+                    If exists = False Then
+                        Range("I" & line) = temp
+                        Range("J" & line) = Cells(i, 1)
+                        Range("k" & line) = Cells(i, j)
+                        Range("L" & line) = j - 3
+                        Range("M" & line) = Range("L" & line) + Range("I" & line)
+                        If temp = 0 Then Range("M" & line) = 100
+                    End If
+                End If
+            End If
+        Next
+        line = line + 1
+    Next
+End Sub
