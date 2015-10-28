@@ -1,0 +1,29 @@
+Sub CourseSearch()
+
+    Dim courseID As String
+    Dim studentID As String
+    Dim srank As Integer
+
+    Range("A2").Select
+    Do Until IsEmpty(ActiveCell)
+        courseID = ActiveCell.Value
+        'test: ActiveCell = ActiveCell.Value + 1
+        Dim i As Integer
+        i = 1
+        
+        Do Until IsEmpty(ActiveCell.Offset(0, 2 + i))
+            studentID = ActiveCell.Offset(0, 2 + i).Value
+            srank = i
+            'call student search with (courseID, studentID, srank)
+            'test: ActiveCell.Offset(0, 2 + i) = ActiveCell.Offset(0, 2 + i).Value + 1
+            i = i + 1
+        Loop
+
+        ActiveCell.Offset(1, 0).Select
+        
+    
+    Loop
+    
+    
+    
+End Sub
